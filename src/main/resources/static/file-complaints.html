@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Complaint</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Poppins', sans-serif;
+          background: url('images/fcbg.jpg') no-repeat center center fixed;
+          background-size: cover;
+          margin: 0;
+          padding: 0;
+          min-height: 100vh;
+        }
+
+        header {
+      background: linear-gradient(to right, #036666, #0f9d58);
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+        .logo {
+          display: flex;
+          align-items: center;
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        .logo img {
+          height: 30px;
+          margin-right: 10px;
+        }
+
+        .nav-options {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .nav-options a {
+          color: white;
+          text-decoration: none;
+          font-weight: 500;
+          transition: opacity 0.3s ease;
+        }
+
+        .nav-options a:hover {
+          opacity: 0.85;
+        }
+
+        .profile-icon {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background-color: #ffffffcc;
+          color: #2e7d32;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          font-size: 14px;
+        }
+
+        .container {
+          background: rgba(255, 255, 255, 0.9);
+          padding: 30px 40px;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          max-width: 700px;
+          width: 90%;
+          margin: 60px auto;
+          backdrop-filter: blur(8px);
+        }
+
+        h2 {
+          text-align: center;
+          margin-bottom: 25px;
+          color: #333;
+        }
+
+        .form-group {
+          margin-bottom: 18px;
+        }
+
+        label {
+          font-weight: 600;
+          display: block;
+          margin-bottom: 6px;
+        }
+
+        input, select, textarea {
+          width: 100%;
+          padding: 10px 12px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          font-size: 15px;
+        }
+
+        textarea {
+          resize: vertical;
+          min-height: 90px;
+        }
+
+        button[type="submit"] {
+          background: #28a745;
+          color: white;
+          padding: 12px;
+          width: 100%;
+          border: none;
+          border-radius: 8px;
+          font-size: 16px;
+          cursor: pointer;
+          font-weight: 600;
+        }
+
+        button[type="submit"]:hover {
+          background: #218838;
+        }
+
+        @media (max-width: 600px) {
+          header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+          }
+
+          .nav-options {
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+          }
+
+          .logo {
+            font-size: 18px;
+          }
+
+          .container {
+            padding: 20px;
+          }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="images/image6.png" alt="Logo">
+        SmartSeva
+    </div>
+    <div class="nav-options">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="index.html">Logout</a>
+        <a href="profile.html" title="Profile">
+            <div class="profile-icon" id="profileIcon">A</div>
+        </a>
+    </div>
+</header>
+
+<div class="container" id="formContainer">
+    <h2>File a Complaint</h2>
+    <form id="complaintForm">
+        <div class="form-group">
+            <label for="serviceType">Service Category:</label>
+            <select id="serviceType" required>
+                <option value="">-- Select --</option>
+                <option value="Garbage">Garbage</option>
+                <option value="Water">Water Supply</option>
+                <option value="Electricity">Electricity</option>
+                <option value="Drainage">Drainage</option>
+                <option value="Road">Road Maintenance</option>
+                <option value="Streetlight">Street Light</option>
+                <option value="Stray Animals">Stray Animals</option>
+                <option value="Noise">Noise Pollution</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group" id="issueTypeGroup" style="display:none;">
+            <label for="issueType">Issue Type:</label>
+            <select id="issueType">
+                <option value="">-- Select Issue --</option>
+            </select>
+        </div>
+
+        <div class="form-group" id="otherIssueGroup" style="display:none;">
+            <label for="otherIssue">Other Issue:</label>
+            <input type="text" id="otherIssue" placeholder="Describe your issue briefly" />
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" placeholder="Explain your issue in detail" required></textarea>
+        </div>
+
+        <h3 style="margin: 20px 0 10px; color:#444;">Complaint Address</h3>
+
+        <div class="form-group">
+            <label for="houseNo">House No / Building:</label>
+            <input type="text" id="houseNo" required>
+        </div>
+
+        <div class="form-group">
+            <label for="street">Street / Area:</label>
+            <input type="text" id="street" required>
+        </div>
+
+        <div class="form-group">
+            <label for="landmark">Landmark (optional):</label>
+            <input type="text" id="landmark">
+        </div>
+
+        <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" required>
+        </div>
+
+        <div class="form-group">
+            <label for="pincode">Pincode:</label>
+            <input type="text" id="pincode" pattern="\d{6}" maxlength="6" required>
+        </div>
+
+        <button type="submit">Submit Complaint</button>
+    </form>
+</div>
+
+<script>
+    // Set profile icon letter from username
+    const username = localStorage.getItem('username') || 'A'; // Replace with real username logic
+    document.getElementById('profileIcon').innerText = username.charAt(0).toUpperCase();
+</script>
+<script src="js/file-complaints.js"></script>
+</body>
+</html>

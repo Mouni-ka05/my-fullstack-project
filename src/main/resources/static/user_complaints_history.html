@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Complaint History</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+  font-family: 'Poppins', sans-serif;
+  background: url('images/hisbg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+
+    header {
+      background: linear-gradient(to right, #036666, #0f9d58);
+      color: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .logo img {
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .nav-options {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-options a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-options a:hover {
+      opacity: 0.85;
+    }
+
+    .profile-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #ffffffcc;
+      color: #2e7d32;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .main-content {
+      padding: 30px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h2.page-title {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .complaint-card {
+      background: #fff;
+      padding: 20px;
+      margin: 15px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 600px;
+    }
+
+    .complaint-card p {
+      margin: 8px 0;
+    }
+
+    .status {
+      font-weight: bold;
+    }
+
+    .resolved {
+      color: green;
+    }
+
+    .pending {
+      color: orange;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="images/image6.png" alt="Logo">
+    SmartSeva
+  </div>
+  <div class="nav-options">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="index.html">Logout</a>
+    <a href="profile.html" title="Profile">
+      <div class="profile-icon" id="profileIcon">A</div>
+    </a>
+  </div>
+</header>
+
+<div class="main-content">
+  <h2 class="page-title">Your Complaint History</h2>
+  <div id="complaintHistory"></div>
+</div>
+
+<script>
+  const username = localStorage.getItem('username') || 'A';
+  document.getElementById('profileIcon').innerText = username.charAt(0).toUpperCase();
+</script>
+
+<script src="js/complaint_history.js"></script>
+
+</body>
+</html>

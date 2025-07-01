@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirecting...</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const username = localStorage.getItem('username');
+      if (!username) {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://localhost:8081/api/user-profile/${username}`);
+        const result = await response.json();
+
+        if (result.firstName && result.lastName && result.phone && result.email && result.address) {
+          window.location.href = 'user_dashboard.html';
+        } else {
+          window.location.href = 'profile.html';
+        }
+
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to load profile info.');
+      }
+    });
+  </script>
+</head>
+<body>
+  Redirecting...
+</body>
+</html>

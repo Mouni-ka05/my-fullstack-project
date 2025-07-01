@@ -1,0 +1,90 @@
+<!-- ✅ register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="js/register.js" defer></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('images/loginpic.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #0a0101;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .register-container {
+  background: rgba(255, 255, 255, 0.85); /* semi-transparent white */
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  width: 320px;
+  text-align: center;
+}
+
+    h2 {
+      margin-bottom: 20px;
+    }
+    form input {
+      width: 100%;
+      padding: 10px;
+      margin: 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    button {
+      width: 105%;
+      padding: 12px;
+      border: none;
+      background: #f3f6f5;
+      color: #070202;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #b0b7b9;
+    }
+    #message {
+      margin-top: 15px;
+      font-weight: 600;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      color: #4d9696;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .strength {
+      font-size: 12px;
+      margin-top: -8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+<div class="register-container">
+  <h2>Create an Account</h2>
+  <form id="registerForm">
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <div class="strength" id="strengthMsg"></div>
+    <button type="submit">Register</button>
+  </form>
+  <p id="message"></p>
+  <a href="login.html">Already have an account? Login</a>
+</div>
+</body>
+</html>

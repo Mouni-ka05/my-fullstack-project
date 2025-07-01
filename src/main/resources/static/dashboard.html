@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Municipal Complaint Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 50px; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url("images/image8.png") no-repeat center center fixed;
+      background-size: cover;
+      color: #034d4d;
+    }
+
+    header {
+      background: linear-gradient(to right, #036666, #0f9d58);
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 { font-size: 24px; }
+    nav { flex: 1; text-align: center; }
+
+    nav a {
+      display: inline-block;
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 40px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover { color: #bff0dd; }
+
+    header button {
+      background-color: #0f9d58;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .profile-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #ffffffcc;
+  color: #2e7d32;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+
+    header button:hover { background-color: #02886d; }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 30px;
+      color: #090000;
+    }
+
+    .content-box {
+      background: #fff;
+      color: #333;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      max-width: 1000px;
+      margin: 0 auto 30px auto;
+      text-align: center;
+    }
+
+    .content-box p {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .btn-group {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .btn-group button {
+      background: #0f9d58;
+      color: white;
+      padding: 14px 30px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-group button:hover { background: #036666; }
+
+    .about-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 25px;
+  justify-content: center;
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+.service-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 15px 10px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  height: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.service-card p {
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+}
+
+    .services-scroll {
+  overflow: hidden;
+  position: relative;
+  margin-top: 30px;
+}
+
+.scroll-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 30s linear infinite;
+}
+
+.scroll-track .card {
+  flex: 0 0 auto;
+  width: 260px;
+  margin: 0 15px;
+  background: #fff;
+  color: #034d4d;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.scroll-track .card img {
+  width: 70px;
+  margin-bottom: 12px;
+}
+
+/* Auto-scroll animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+    footer {
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    .btn-group {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.action-card {
+  background: #ffffffcc;
+  border: 2px solid #0f9d58;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 320px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+.action-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+}
+
+.action-card p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #034d4d;
+  margin: 0;
+}
+
+.action-card:hover {
+  transform: translateY(-8px);
+  background: #d7f5ee;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+}
+
+/* Mobile-friendly */
+@media (max-width: 600px) {
+  .action-card {
+    width: 90%;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .action-card img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .action-card p {
+    font-size: 16px;
+  }
+}
+
+display: flex;
+align-items: center;
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Municipal Dashboard</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#importance">Why Important?</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="header-right">
+    <button onclick="logout()">Logout</button>
+    <a href="profile.html" title="Profile">
+      <div class="profile-icon" id="profileIcon">A</div>
+    </a>
+  </div>
+</header>
+
+<div class="section">
+  <h2 id="welcomeUser">Welcome!</h2>
+  <div class="btn-group">
+    <div class="action-card" onclick="fileComplaints()">
+      <img src="images/fcpic.jpg" alt="File Complaints">
+      <p>File Complaints</p>
+    </div>
+    <div class="action-card" onclick="complaintsHistory()">
+      <img src="images/hispic.avif" alt="Complaints History">
+      <p>Complaints History</p>
+    </div>
+  </div>
+</div>
+
+
+<section class="section" id="about">
+  <h2>About Municipal Services</h2>
+  <div class="content-box">
+    <p>
+      Municipal services are essential services provided by local governments for the public’s well-being. They include water supply, sanitation, waste management, street lighting, public transport, and maintenance of public spaces. These services ensure citizens live in a safe, clean, and healthy environment.
+    </p>
+  </div>
+
+  <div class="about-images">
+    <div class="service-card">
+      <img src="https://png.pngtree.com/png-clipart/20240416/original/pngtree-cartoon-city-street-light-clip-art-png-image_14865647.png" alt="Street Lighting">
+      <p>Street Lighting</p>
+    </div>
+    <div class="service-card">
+      <img src="https://www.shutterstock.com/image-vector/recycling-program-green-waste-management-260nw-2461809723.jpg" alt="Waste Management">
+      <p>Waste Management</p>
+    </div>
+    <div class="service-card">
+      <img src="https://www.shutterstock.com/image-vector/water-treatment-system-filtration-storage-260nw-2262866601.jpg" alt="Water Supply">
+      <p>Water Supply</p>
+    </div>
+    <div class="service-card">
+      <img src="https://img.freepik.com/free-photo/school-playground-anime-style_23-2151125228.jpg?semt=ais_items_boosted&w=740" alt="Public Parks">
+      <p>Public Parks</p>
+    </div>
+    <div class="service-card">
+      <img src="https://media.istockphoto.com/id/1137285786/vector/roadwork-asphalt-paving-flat-color-illustration.jpg?s=612x612&w=0&k=20&c=sPQtdkGA1pTuPt_kuT4xbt3EAmMk_cjYx9y86-kRiPg=" alt="Road Maintenance">
+      <p>Road Maintenance</p>
+    </div>
+    <div class="service-card">
+      <img src="https://img.freepik.com/free-vector/social-distancing-public-transport-design_23-2148545194.jpg" alt="Public Transport">
+      <p>Public Transport</p>
+    </div>
+    <div class="service-card">
+      <img src="https://teamsafetyservices.com/wp-content/uploads/2023/09/TEAM-Safety-Services-Fire-Safety.png" alt="Fire Safety Services">
+      <p>Fire Safety</p>
+    </div>
+    <div class="service-card">
+      <img src="https://png.pngtree.com/png-clipart/20230117/ourmid/pngtree-sanitation-workers-day-sanitation-workers-clean-the-fallen-leaves-on-the-png-image_6163938.png" alt="Sanitation Services">
+      <p>Sanitation Services</p>
+    </div>
+    <div class="service-card">
+      <img src="https://i.pinimg.com/736x/e2/c2/70/e2c27090b57d4217f22ba9b7a6e6aacd.jpg" alt="Community Centers">
+      <p>Community Centers</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <h2>Our Services</h2>
+  <div class="services-scroll">
+    <div class="scroll-track">
+      <!-- Repeat cards twice for smooth infinite scroll -->
+      <div class="card">
+        <img src="https://img.icons8.com/ios/100/000000/garbage-truck.png" alt="Waste Management">
+        <h3>Waste Management</h3>
+        <p>Regular garbage collection and disposal for a clean city environment.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/ios/100/000000/water.png" alt="Water Supply">
+        <h3>Water Supply</h3>
+        <p>24x7 potable water supply with efficient pipeline maintenance.</p>
+      </div>
+      <div class="card">
+        <img src="images/icons8-street-lamp-50.png" alt="Street Lighting">
+        <h3>Street Lighting</h3>
+        <p>Well-lit roads and public places for citizens’ safety after dark.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/ios/100/000000/road.png" alt="Road Maintenance">
+        <h3>Road Maintenance</h3>
+        <p>Repair, upkeep and construction of city roads and footpaths.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/ios/100/000000/park-bench.png" alt="Public Parks">
+        <h3>Public Parks</h3>
+        <p>Clean, green parks and recreational spaces for the community to relax.</p>
+      </div>
+      <div class="card">
+        <img src="images/icons8-drainage-32.png" alt="Drainage Management">
+        <h3>Drainage Management</h3>
+        <p>Proper drainage and sewage systems to avoid waterlogging and maintain hygiene.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/ios/100/000000/fire-station.png" alt="Fire Services">
+        <h3>Fire & Emergency Services</h3>
+        <p>Quick-response fire brigades and emergency teams for citizen safety.</p>
+      </div>
+      <div class="card">
+        <img src="images/icons8-town-hall-49.png" alt="Town Hall Services">
+        <h3>Town Hall Services</h3>
+        <p>Public grievance redressal, community events, and administrative assistance.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/ios/100/000000/street-view.png" alt="Public Spaces Maintenance">
+        <h3>Public Spaces Maintenance</h3>
+        <p>Clean and safe public spaces like bus stops, footpaths, and markets.</p>
+      </div>
+
+      <!-- Repeat the same cards again for smooth infinite scrolling -->
+      <div class="card">
+        <img src="https://img.icons8.com/ios/100/000000/garbage-truck.png" alt="Waste Management">
+        <h3>Waste Management</h3>
+        <p>Regular garbage collection and disposal for a clean city environment.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/ios/100/000000/water.png" alt="Water Supply">
+        <h3>Water Supply</h3>
+        <p>24x7 potable water supply with efficient pipeline maintenance.</p>
+      </div>
+      <!-- ...repeat all other cards again ... -->
+    </div>
+  </div>
+</section>
+
+<section class="section" id="importance">
+  <h2>Why Municipal Services Are Important?</h2>
+  <div class="content-box">
+    <p>
+      Municipal services play a crucial role in maintaining public health, infrastructure, and safety. They ensure clean drinking water, manage waste effectively, maintain well-lit streets, and care for public parks and spaces — all contributing to a better quality of life for the city's residents.
+    </p>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <h2>Contact Us</h2>
+  <div class="content-box">
+    <p>
+      📞 Phone: 1800-123-4567 <br><br>
+      ✉ Email: smartseva05@gmail.com
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Municipal Corporation. All rights reserved.</p>
+</footer>
+
+<script>
+  function logout() {
+    alert("Logged out successfully!");
+    window.location.href = "index.html";
+  }
+
+  function fileComplaints() {
+    window.location.href = "file-complaints.html";
+  }
+
+  function complaintsHistory() {
+    window.location.href = "user_complaints_history.html";
+  }
+</script>
+<script>
+  const username = localStorage.getItem('username') || 'User';
+
+  // Set profile icon to first letter
+  document.getElementById('profileIcon').innerText = username.charAt(0).toUpperCase();
+
+  // Set welcome message
+  document.getElementById('welcomeUser').innerText = `Welcome, ${username}!`;
+</script>
+
+</body>
+</html>

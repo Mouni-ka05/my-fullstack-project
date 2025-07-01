@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(to right, #036666, #0f9d58);
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .logo img {
+      height: 45px;
+      margin-right: 10px;
+    }
+
+    .nav-options {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-options a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-options a:hover {
+      opacity: 0.85;
+    }
+
+    .profile-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #ffffffcc;
+      color: #2e7d32;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .profile-container {
+      max-width: 600px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .profile-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #4caf50;
+      margin-bottom: 20px;
+    }
+
+    #profilePicInput {
+      display: none;
+    }
+
+    .profile-field {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    input[readonly], textarea[readonly] {
+      background-color: #f9f9f9;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background: #388e3c;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .nav-options {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .profile-container {
+        margin: 30px 16px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <img src="images/image6.png" alt="Logo">
+    SmartSeva
+  </div>
+  <div class="nav-options">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="index.html">Logout</a>
+    <a href="profile.html" title="Profile">
+      <div class="profile-icon" id="profileIcon">A</div>
+    </a>
+  </div>
+</header>
+
+<!-- PROFILE CONTAINER -->
+<div class="profile-container">
+  <h2>My Profile</h2>
+
+  <!-- Profile Image Display Only -->
+  <img id="profilePicPreview" class="profile-image" src="images/default-user.jpg" alt="Profile Image">
+
+  <!-- Hidden file input -->
+  <input type="file" id="profilePicInput" accept="image/*" disabled>
+
+  <!-- Profile Fields -->
+  <div class="profile-field">
+    <label>First Name</label>
+    <input type="text" id="firstName" placeholder="Enter your first name" readonly>
+  </div>
+
+  <div class="profile-field">
+    <label>Last Name</label>
+    <input type="text" id="lastName" placeholder="Enter your last name" readonly>
+  </div>
+
+  <div class="profile-field">
+    <label>Phone Number</label>
+    <input type="text" id="phoneNumber" placeholder="Enter your phone number" readonly>
+  </div>
+
+  <div class="profile-field">
+    <label>Email</label>
+    <input type="email" id="email" placeholder="Enter your email" readonly>
+  </div>
+
+  <div class="profile-field">
+    <label>Address</label>
+    <textarea id="address" placeholder="Enter your address" readonly></textarea>
+  </div>
+
+  <button id="editBtn" style="display: none;">Edit Profile</button>
+  <button id="saveBtn" style="display: none;">Submit Profile</button>
+</div>
+
+<script>
+  // Set profile icon letter
+  const userLetter = (localStorage.getItem('username') || 'U').charAt(0).toUpperCase();
+  document.getElementById('profileIcon').innerText = userLetter;
+</script>
+<script src="js/auth.js"></script>
+<script src="js/profile.js"></script>
+
+</body>
+</html>

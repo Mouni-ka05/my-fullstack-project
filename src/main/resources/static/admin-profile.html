@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Profile - SmartSeva</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+          font-family: 'Poppins', sans-serif;
+          margin: 0;
+          background: #f4f4f4;
+          color: #333;
+        }
+
+        header {
+          background: linear-gradient(to right, #036666, #0f9d58);
+          padding: 20px;
+          color: white;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .logo {
+          display: flex;
+          align-items: center;
+          font-weight: bold;
+          font-size: 22px;
+        }
+
+        .logo img {
+          height: 40px;
+          margin-right: 10px;
+        }
+
+        .nav-options {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+        }
+
+        .nav-options a {
+          color: white;
+          text-decoration: none;
+          font-weight: 500;
+        }
+
+        .nav-options a:hover {
+          text-decoration: underline;
+        }
+
+        .profile-container {
+          background: white;
+          max-width: 600px;
+          margin: 50px auto;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+          text-align: center;
+        }
+
+        .profile-image {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          border: 3px solid #0f9d58;
+          object-fit: cover;
+          margin-bottom: 20px;
+          cursor: pointer;
+        }
+
+        #profilePicInput {
+          display: none;
+        }
+
+        .profile-field {
+          text-align: left;
+          margin-bottom: 20px;
+        }
+
+        label {
+          font-weight: 600;
+          margin-bottom: 5px;
+          display: block;
+        }
+
+        input {
+          width: 100%;
+          padding: 12px;
+          border-radius: 6px;
+          border: 1px solid #ccc;
+          font-size: 15px;
+        }
+
+        input[readonly] {
+          background: #f9f9f9;
+        }
+
+        button {
+          padding: 12px 20px;
+          background: #0f9d58;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-size: 16px;
+          cursor: pointer;
+          width: 100%;
+          margin-top: 10px;
+        }
+
+        button:hover {
+          background: #036666;
+        }
+
+        @media (max-width: 600px) {
+          .profile-container {
+            margin: 30px 16px;
+            padding: 20px;
+          }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="images/image6.png" alt="SmartSeva Logo">
+        SmartSeva Admin
+    </div>
+    <div class="nav-options">
+        <a href="admindashboard.html">Dashboard</a>
+        <a href="logout.html">Logout</a>
+    </div>
+</header>
+
+<div class="profile-container">
+    <h2>Admin Profile</h2>
+
+    <img id="profilePicPreview" class="profile-image" src="images/default-user.jpg" alt="Admin Image">
+
+    <input type="file" id="profilePicInput" accept="image/*" disabled>
+
+    <div class="profile-field">
+        <label for="adminName">Name</label>
+        <input type="text" id="adminName" value="Admin User" readonly>
+    </div>
+
+    <div class="profile-field">
+        <label for="adminEmail">Email</label>
+        <input type="email" id="adminEmail" value="admin@smartseva.com" readonly>
+    </div>
+
+    <div class="profile-field">
+        <label for="adminPhone">Phone Number</label>
+        <input type="text" id="adminPhone" value="+91 9876543210" readonly>
+    </div>
+
+    <button id="editBtn">Edit Profile</button>
+    <button id="saveBtn" style="display: none;">Save Changes</button>
+</div>
+
+<script>
+    const profilePicPreview = document.getElementById('profilePicPreview');
+    const profilePicInput = document.getElementById('profilePicInput');
+    const editBtn = document.getElementById('editBtn');
+    const saveBtn = document.getElementById('saveBtn');
+    const fields = ['adminName', 'adminEmail', 'adminPhone'];
+
+    function setReadOnly(state) {
+      fields.forEach(id => {
+        document.getElementById(id).readOnly = state;
+      });
+      profilePicInput.disabled = state;
+    }
+
+    editBtn.addEventListener('click', () => {
+      setReadOnly(false);
+      editBtn.style.display = 'none';
+      saveBtn.style.display = 'block';
+    });
+
+    saveBtn.addEventListener('click', () => {
+      alert("Changes saved successfully.");
+      setReadOnly(true);
+      editBtn.style.display = 'block';
+      saveBtn.style.display = 'none';
+    });
+
+    profilePicPreview.addEventListener('click', () => {
+      if (!profilePicInput.disabled) {
+        profilePicInput.click();
+      }
+    });
+
+    profilePicInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          profilePicPreview.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+</script>
+
+</body>
+</html>

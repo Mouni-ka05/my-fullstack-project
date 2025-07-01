@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generate Reports | SmartSeva</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f1f3f6;
+      background: url('images/gen.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header/Navbar */
+    .navbar {
+      background: linear-gradient(to right, #00796b, #388e3c);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+    }
+
+    .profile-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #ffffffcc;
+      color: #2e7d32;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .navbar .logo span {
+      font-weight: 600;
+      font-size: 1.5rem;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .navbar .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s ease;
+    }
+
+    .navbar .nav-links a:hover {
+      opacity: 0.8;
+    }
+
+    /* Centered container */
+    .main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+    }
+
+    .report-container {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+      text-align: left;
+    }
+
+    .report-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .report-container p {
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .report-container strong {
+      color: #444;
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .navbar .nav-links {
+        margin-top: 10px;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header/Navbar -->
+<div class="navbar">
+  <div class="logo">
+    <img src="images/image6.png" alt="SmartSeva Logo" />
+    <span>SmartSeva</span>
+  </div>
+  <div class="nav-links">
+    <a href="admindashboard.html">Dashboard</a>
+    <a href="logout.html">Logout</a>
+    <a href="admin-profile.html" title="Profile">
+      <div class="profile-icon" id="profileIcon">A</div>
+    </a>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="main">
+  <div class="report-container" id="reportContent">
+    <h2>Generate Reports</h2>
+    <p><strong>Total Users:</strong> <span id="totalUsers">0</span></p>
+    <p><strong>Total Complaints:</strong> <span id="totalComplaints">0</span></p>
+    <p><strong>Resolved Complaints:</strong> <span id="resolvedComplaints">0</span></p>
+    <p><strong>Pending Complaints:</strong> <span id="pendingComplaints">0</span></p>
+  </div>
+</div>
+
+<!-- JS to update report values -->
+<script src="js/generate_reports.js"></script>
+
+</body>
+</html>

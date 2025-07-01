@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard | Municipal Complaint Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: url("images/image19.jpg") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    header {
+      background: linear-gradient(to right, #00796b, #43a047);
+      color: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 12px;
+    }
+
+    .nav-options {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .nav-options a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
+
+    .nav-options a:hover {
+      opacity: 0.8;
+    }
+
+    .profile-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #ffffffcc;
+      color: #2e7d32;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 150px 150px 200px 700px; /* Adjust this padding to move left or right */
+    }
+
+    .right-content {
+      max-width: 480px;
+    }
+
+    .glass-card {
+      background: rgba(30, 30, 30, 0.5);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 20px;
+      padding: 40px 30px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-card h2 {
+      font-size: 32px;
+      margin-bottom: 50px;
+      color: #fff;
+    }
+
+    .btn-group button {
+      width: 100%;
+      padding: 16px 22px;
+      margin: 14px 0;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ffffff;
+      color: #00796b;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-group button:hover {
+      background: #d7f5ee;
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 20px 10px;
+      }
+
+      .glass-card {
+        padding: 25px 20px;
+        max-width: 95%;
+      }
+
+      .glass-card h2 {
+        font-size: 24px;
+      }
+
+      .btn-group button {
+        font-size: 15px;
+        padding: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .glass-card h2 {
+        font-size: 20px;
+      }
+
+      .btn-group button {
+        font-size: 14px;
+        padding: 12px;
+      }
+    }
+
+    .container, .glass-card {
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="images/image6.png" alt="Logo" />
+    SmartSeva
+  </div>
+  <div class="nav-options">
+    <a href="index.html">Logout</a>
+    <a href="admin-profile.html" title="Profile">
+      <div class="profile-icon">A</div>
+    </a>
+  </div>
+</header>
+
+<div class="container">
+  <div class="right-content">
+    <div class="glass-card">
+      <h2>Welcome, Admin!</h2>
+      <div class="btn-group">
+        <button onclick="viewComplaints()">📄 View All Complaints</button>
+        <button onclick="manageUsers()">👥 Manage Users</button>
+        <button onclick="systemReports()">📊 Generate Reports</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function viewComplaints() {
+    window.location.href = "veiw-complaints.html";
+  }
+
+  function manageUsers() {
+    window.location.href = "manage-users.html";
+  }
+
+  function systemReports() {
+    window.location.href = "generate-reports.html";
+  }
+</script>
+
+</body>
+</html>
