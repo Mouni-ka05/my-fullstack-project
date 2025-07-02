@@ -5,5 +5,5 @@ RUN mvn clean install -DskipTests
 
 FROM openjdk:17-jdk-slim
 WORKDIR /app
-COPY --from=build /app/target/municipal.jar ./municipal.jar
+COPY --from=build /app/target/municipal-0.0.1-SNAPSHOT.jar ./municipal.jar
 ENTRYPOINT ["java", "-jar", "municipal.jar"]
